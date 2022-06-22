@@ -731,7 +731,7 @@ void DecCu::xReconInter(CodingUnit &cu)
       int         picWidth  = cs.picture->getPicWidthInLumaSamples();
       int         picHeight = cs.picture->getPicHeightInLumaSamples();
       Pel *       yPxl      = piPred.Y().buf;
-      //Ô¤²âÏñËØ¡¢²Î¿¼ÏñËØ¡¢Ä£Ê½¡¢×ø±êÐ´Èë
+      //Ô¤²âÏñËØ¡¢×ø±êÐ´Èë
       
       std::ofstream     write;
       std::ofstream     posWrite;
@@ -744,6 +744,8 @@ void DecCu::xReconInter(CodingUnit &cu)
 
       read.open("E:\\DGC\\code\\tmp.txt", ios::in);
       std::getline(read, picName);
+      int poc = cs.slice->getPOC();
+      picName = picName + "_" + std::to_string(poc);
       if (width == 8)
       {
         filePath = "E:\\DGC\\VVC_dataset\\interDataSet\\train\\qp37\\block_size_8x8\\pred\\" + picName + ".txt";
